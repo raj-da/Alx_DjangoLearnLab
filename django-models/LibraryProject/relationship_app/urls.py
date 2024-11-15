@@ -10,5 +10,8 @@ urlpatterns = [
     path('logout/', views.CustomLogoutView.as_view(), name='logout'),
     path('admin/', views.admin_view, name='admin_view'),
     path('librarian/', views.librarian_view, name='librarian_view'),
-    path('member/', views.member_view, name='member_view'), 
+    path('member/', views.member_view, name='member_view'),
+    path('add_book/', views.add_book, name='add-book'),
+    path('edit_book/<int:pk>/', views.edit_book, name='edit-book'),
+    path('delete/<int:pk>/', views.delete_book, name='delete-book'), 
 ]
