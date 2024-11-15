@@ -34,6 +34,9 @@ def register(request):
             user = form.save()
             login(request, user)
             return redirect('login')
+    else:
+        form = UserCreationForm()
+    return render(request, 'relationship_app/register.html', {'form': form})
 
 
 def is_admin(user):
