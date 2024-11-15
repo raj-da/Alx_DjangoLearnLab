@@ -3,6 +3,7 @@ from .models import Library, Book, UserProfile
 from django.views.generic.detail import DetailView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required, user_passes_test, permission_required
 
 
@@ -31,6 +32,7 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
+            login(request, user)
             return redirect('login')
         
 
