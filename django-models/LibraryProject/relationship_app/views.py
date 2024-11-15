@@ -34,14 +34,6 @@ def register(request):
             user = form.save()
             login(request, user)
             return redirect('login')
-        
-
-class CustomLoginView(LoginView):
-    template_name = 'relationship_app/login.html'
-
-
-class CustomLogoutView(LogoutView):
-    template_name = 'relationship_app/logout.html'
 
 
 def is_admin(user):
