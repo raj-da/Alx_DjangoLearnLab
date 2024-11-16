@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, PermissionsMixin, BaseUserManager
 
 
-class CustomAccountManager(BaseUserManager):
+class CustomUserManager(BaseUserManager):
     def create_user(self, username, email, password, **other_fields):
         if not email:
             raise ValueError("Email field must be set")
@@ -32,7 +32,7 @@ class CustomUser(AbstractUser):
     date_of_birth = models.DateField()
     profile_photo = models.ImageField()
 
-    objects = CustomAccountManager()
+    objects = CustomUserManager()
 
     def __str__(self):
         return self.username
