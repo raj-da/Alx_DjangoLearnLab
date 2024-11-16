@@ -28,7 +28,7 @@ class CustomAccountManager(BaseUserManager):
         
 
 
-class NewUser(AbstractUser, PermissionsMixin):
+class CustomUser(AbstractUser, PermissionsMixin):
     date_of_birth = models.DateField()
     profile_photo = models.ImageField()
 
