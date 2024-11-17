@@ -5,7 +5,7 @@ from .models import Document
 @permission_required('bookshelf.can_view', raise_exception=True)
 def documents_list(request):
     douments = Document.objects.all()
-    return render(request, 'documents/list.html', {'documents': douments})
+    return render(request, 'documents/list.html', {'book_list': douments})
 
 @permission_required('myapp.can_create', raise_exception=True)
 def document_create(request):
