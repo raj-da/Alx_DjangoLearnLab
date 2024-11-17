@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-wt20(z31h8=j)*vio9x)*s!@o@_+3zdbni-noxed*_j0pw@q+t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -125,3 +125,27 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'bookshelf.CustomUser'
+
+SECURE_BROWSER_XSS_FILTER = True
+X_FRAME_OPTIONS = 'DENY'  # Prevents clickjacking
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+# Enforce HTTPS-only cookies
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+
+# HSTS settings to enforce HTTPS
+SECURE_HSTS_SECONDS = 31536000  # 1 year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+INSTALLED_APPS += ['csp']
+
+MIDDLEWARE += [
+    'csp.middleware.CSPMiddleware',
+]
+
+# Define the CSP policy
+CSP_DEFAULT_SRC = ["'self'"]  # Restrict content to your domain
+CSP_SCRIPT_SRC = ["'self'", 'https://trusted-scripts.com']  # Allow trusted scripts
+CSP_STYLE_SRC = ["'self'", 'https://trusted-styles.com']  # Allow trusted stylesheets
