@@ -150,3 +150,7 @@ MIDDLEWARE += [
 CSP_DEFAULT_SRC = ["'self'"]  # Restrict content to your domain
 CSP_SCRIPT_SRC = ["'self'", 'https://trusted-scripts.com']  # Allow trusted scripts
 CSP_STYLE_SRC = ["'self'", 'https://trusted-styles.com']  # Allow trusted stylesheets
+
+# additional delete in case
+SECURE_PROXY_SSL_HEADER = True
+HTTP_X_FORWARDED_PROTO = True
