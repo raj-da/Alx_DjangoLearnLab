@@ -7,4 +7,7 @@ class Author(models.Model):
 class Book(models.Model):
     title = models.CharField(max_length=20)
     publication_year = models.IntegerField()
-    author = models.ForeignKey(Author, on_delete=None, related_name='books')
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='books')
+from django.db import models
+
+# Create your models here.
